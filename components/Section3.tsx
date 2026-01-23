@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 interface DestinationCard {
   id: number;
@@ -122,14 +123,14 @@ const Section3 = () => {
                   </div>
 
                   {/* Round Button with Zoom Out Effect */}
-                  <motion.button
-                    whileHover={{ scale: 0.9, rotate: -45 }}
-                    whileTap={{ scale: 0.85 }}
-                    className="w-14 h-14 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:bg-white"
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="!w-14 !h-14 !p-0 !bg-white/10 !backdrop-blur-md !border !border-white/20 !rounded-full !shadow-2xl hover:!bg-white group/btn"
                     aria-label={`View ${destination.title}`}
                   >
-                    <ArrowRight className="w-6 h-6 text-white group-hover:text-black transition-colors" />
-                  </motion.button>
+                    <ArrowRight className="w-6 h-6 text-white group-hover/btn:text-black transition-colors" />
+                  </Button>
                 </div>
               </div>
             </motion.div>

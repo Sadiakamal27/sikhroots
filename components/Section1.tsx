@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 // Counter animation hook
 const useCounter = (end: number, duration: number = 2000, inView: boolean) => {
@@ -136,14 +137,14 @@ const Section1 = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <motion.button
-                whileHover={{ scale: 0.95 }}
-                whileTap={{ scale: 0.9 }}
-                className="group px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-full font-semibold text-lg transition-all duration-300 flex items-center gap-2 hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white border-2 border-black dark:border-white shadow-lg"
+              <Button
+                variant="outline"
+                size="lg"
+                className="!bg-black dark:!bg-white !text-white dark:!text-black !rounded-full !border-2 !border-black dark:!border-white hover:!bg-white hover:!text-black dark:hover:!bg-black dark:hover:!text-white"
               >
                 Discover More
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
+              </Button>
             </motion.div>
 
             {/* Counter Stats */}

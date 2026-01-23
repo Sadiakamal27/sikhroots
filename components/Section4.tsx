@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { UserCheck, Banknote, FileCheck } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/Card";
 
 const Section4 = () => {
   const features = [
@@ -110,20 +111,25 @@ const Section4 = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.1 * index }}
-                    whileHover={{ shadow: "none" }}
-                    className="group bg-zinc-50 dark:bg-zinc-900/50 p-6 md:p-8 rounded-[2rem] border border-zinc-100 dark:border-zinc-800 shadow-lg hover:shadow-none transition-all duration-300 flex items-start gap-6 cursor-default"
                   >
-                    <div className="w-14 h-14 shrink-0 bg-zinc-900 text-white rounded-full flex items-center justify-center shadow-inner">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-bold text-zinc-900 dark:text-white mb-2">
-                        {feature.title}
-                      </h4>
-                      <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm md:text-base">
-                        {feature.description}
-                      </p>
-                    </div>
+                    <Card
+                      hover={false}
+                      className="!bg-zinc-50 dark:!bg-zinc-900/50 !p-0 !rounded-[2rem] !border-zinc-100 dark:!border-zinc-800 !shadow-lg hover:!shadow-none transition-all duration-300"
+                    >
+                      <CardContent className="!p-6 md:!p-8 flex items-start gap-6">
+                        <div className="w-14 h-14 shrink-0 bg-zinc-900 text-white rounded-full flex items-center justify-center shadow-inner">
+                          <Icon className="w-6 h-6" />
+                        </div>
+                        <div>
+                          <h4 className="text-xl font-bold text-zinc-900 dark:text-white mb-2">
+                            {feature.title}
+                          </h4>
+                          <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm md:text-base">
+                            {feature.description}
+                          </p>
+                        </div>
+                      </CardContent>
+                    </Card>
                   </motion.div>
                 );
               })}

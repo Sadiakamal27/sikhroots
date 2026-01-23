@@ -3,6 +3,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
+import { Button } from "@/components/ui/Button";
+import { Card, CardContent } from "@/components/ui/Card";
 
 const Section5 = () => {
   const reviews = [
@@ -81,14 +83,14 @@ const Section5 = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group px-10 py-5 bg-white text-black rounded-full font-bold text-lg flex items-center gap-3 mx-auto shadow-2xl hover:bg-zinc-100 transition-all"
+              <Button
+                variant="secondary"
+                size="lg"
+                className="!bg-white !text-black !rounded-full !shadow-2xl hover:!bg-zinc-100 mx-auto"
               >
                 Contact Us
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
+              </Button>
             </motion.div>
           </div>
         </div>
@@ -127,24 +129,35 @@ const Section5 = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-zinc-800/50 border border-zinc-700 p-6 rounded-3xl space-y-6 flex flex-col justify-between hover:bg-zinc-800 transition-colors"
               >
-                <p className="text-zinc-300 text-sm leading-relaxed italic">
-                  "{review.text}"
-                </p>
-                <div className="space-y-4">
-                  <div className="flex gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-white text-white" />
-                    ))}
-                  </div>
-                  <div>
-                    <h4 className="text-white font-bold text-lg">
-                      {review.author}
-                    </h4>
-                    <p className="text-zinc-500 text-sm">{review.location}</p>
-                  </div>
-                </div>
+                <Card
+                  hover={false}
+                  className="!bg-zinc-800/50 !border-zinc-700 !rounded-3xl h-full hover:!bg-zinc-800 transition-colors"
+                >
+                  <CardContent className="!p-6 space-y-6 flex flex-col justify-between h-full">
+                    <p className="text-zinc-300 text-sm leading-relaxed italic">
+                      "{review.text}"
+                    </p>
+                    <div className="space-y-4">
+                      <div className="flex gap-1">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className="w-4 h-4 fill-white text-white"
+                          />
+                        ))}
+                      </div>
+                      <div>
+                        <h4 className="text-white font-bold text-lg">
+                          {review.author}
+                        </h4>
+                        <p className="text-zinc-500 text-sm">
+                          {review.location}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
           </div>

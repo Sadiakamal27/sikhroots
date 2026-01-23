@@ -15,6 +15,7 @@ import {
 import { NavigationMenu } from "@base-ui/react/navigation-menu";
 import { Popover } from "@base-ui/react/popover";
 import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/Button";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -146,9 +147,9 @@ const Navbar = () => {
 
         {/* Actions */}
         <div className="flex items-center gap-4">
-          <button className="p-2 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full transition-colors">
+          <Button variant="ghost" size="sm" className="!p-2 !rounded-full">
             <Search className="w-5 h-5" />
-          </button>
+          </Button>
 
           <div className="h-6 w-[1px] bg-zinc-200 dark:bg-zinc-800 hidden sm:block" />
 
@@ -161,16 +162,18 @@ const Navbar = () => {
           </Link>
 
           {/* Mobile Menu Toggle */}
-          <button
+          <Button
+            variant="ghost"
+            size="sm"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-zinc-600 dark:text-zinc-300"
+            className="md:!hidden !p-2"
           >
             {mobileMenuOpen ? (
               <X className="w-6 h-6" />
             ) : (
               <MenuIcon className="w-6 h-6" />
             )}
-          </button>
+          </Button>
         </div>
       </div>
 

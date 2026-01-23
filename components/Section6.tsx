@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Maximize2, X } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 interface GalleryImage {
   src: string;
@@ -98,12 +99,14 @@ const Section6 = () => {
               onClick={() => setSelectedImage(null)}
             >
               {/* Close Button */}
-              <button
-                className="absolute top-8 right-8 text-white hover:rotate-90 transition-transform duration-300 z-[110]"
+              <Button
+                variant="ghost"
+                size="sm"
+                className="!absolute !top-8 !right-8 !text-white hover:!rotate-90 !transition-transform !duration-300 !z-[110] !p-2 !rounded-full"
                 onClick={() => setSelectedImage(null)}
               >
                 <X className="w-10 h-10" />
-              </button>
+              </Button>
 
               {/* Image Container */}
               <motion.div

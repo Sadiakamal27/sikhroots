@@ -76,24 +76,24 @@ const Hero = () => {
               className="flex flex-col sm:flex-row gap-4 items-center"
             >
               {/* Primary Button - Mustard/Primary Color */}
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group px-8 py-4 bg-primary text-white rounded-full font-semibold text-lg border-2 border-white shadow-2xl hover:shadow-primary/50 transition-all duration-300 flex items-center gap-2"
+              <Button
+                variant="primary"
+                size="lg"
+                className="!bg-primary !border-2 !border-white !shadow-2xl hover:!shadow-primary/50 !rounded-full"
               >
                 Book Your Yatra
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
+              </Button>
 
               {/* Secondary Button - Black */}
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group px-8 py-4 bg-black text-white rounded-full font-semibold text-lg border-2 border-white shadow-2xl hover:shadow-black/50 transition-all duration-300 flex items-center gap-2"
+              <Button
+                variant="primary"
+                size="lg"
+                className="!bg-black !border-2 !border-white !shadow-2xl hover:!shadow-black/50 !rounded-full"
               >
                 <Phone className="w-5 h-5" />
                 Contact Us
-              </motion.button>
+              </Button>
             </motion.div>
 
             {/* Trust Indicators */}
@@ -133,8 +133,6 @@ const Hero = () => {
             </motion.div>
           </div>
         </div>
-
-        
       </div>
     </section>
   );

@@ -14,6 +14,8 @@ import {
   MapPin,
   Phone,
 } from "lucide-react";
+import { Input } from "@/components/ui/Input";
+import { Button } from "@/components/ui/Button";
 
 const Footer = () => {
   return (
@@ -21,7 +23,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto">
         {/* Top Section: Logo and Newsletter */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-12 pb-16 border-b border-zinc-800/50">
-          <div className="max-w-xs space-y-6">
+          <div className="max-w-sm space-y-6">
             <div className="relative w-24 h-24 rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/heroimage.jpg"
@@ -37,23 +39,27 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className="w-full lg:max-w-md space-y-6">
+          <div className="w-full lg:max-w-xl space-y-6">
             <h3 className="text-xl font-bold">Our Newsletter</h3>
-            <div className="relative flex items-center">
-              <input
+            <div className="flex items-center gap-3">
+              <Input
                 type="email"
                 placeholder="Your Email Address"
-                className="w-full bg-zinc-900 border border-zinc-800 rounded-full py-4 px-6 text-zinc-300 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all pr-40"
+                className="!bg-zinc-900 !border-zinc-800 !rounded-full"
               />
-              <button className="absolute right-2 bg-white text-black px-6 py-2.5 rounded-full font-bold flex items-center gap-2 hover:bg-zinc-200 transition-all">
+              <Button
+                variant="secondary"
+                size="md"
+                className="shrink-0 !bg-white !text-black hover:!bg-zinc-200"
+              >
                 Subscribe <ArrowRight className="w-4 h-4" />
-              </button>
+              </Button>
             </div>
           </div>
         </div>
 
         {/* Middle Section: Links */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 py-16 text-left">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 py-16 text-left">
           {/* Discover */}
           <div className="space-y-8">
             <h4 className="text-xl font-bold">Discover</h4>
