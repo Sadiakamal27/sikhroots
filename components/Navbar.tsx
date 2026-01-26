@@ -30,14 +30,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out px-6 py-4",
-        isScrolled
-          ? "bg-white/80 dark:bg-black/80 backdrop-blur-xl border-b border-zinc-200/50 dark:border-zinc-800/50 py-3"
-          : "bg-transparent",
-      )}
-    >
+    <nav className="absolute top-6 left-0 right-0 z-50 px-6 py-4 bg-transparent">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
@@ -55,80 +48,34 @@ const Navbar = () => {
             <NavigationMenu.Item>
               <Link
                 href="/"
-                className="text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-primary transition-colors"
+                className="text-sm font-medium text-white dark:text-zinc-300 hover:text-primary transition-colors"
               >
                 Home
               </Link>
             </NavigationMenu.Item>
 
             <NavigationMenu.Item>
-              <NavigationMenu.Trigger className="text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-primary dark:hover:text-primary transition-colors flex items-center gap-1 group">
+              <Link
+                href="/destinations"
+                className="text-sm font-medium text-white dark:text-zinc-300 hover:text-primary transition-colors"
+              >
                 Destinations
-                <ChevronDown className="w-4 h-4 group-data-[open]:rotate-180 transition-transform" />
-              </NavigationMenu.Trigger>
-              <NavigationMenu.Portal>
-                <NavigationMenu.Content className="absolute top-full left-0 mt-4 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-2xl p-6 min-w-[400px] animate-in fade-in zoom-in-95 duration-200">
-                  <div className="grid grid-cols-2 gap-8">
-                    <div className="space-y-4">
-                      <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-400">
-                        Popular Sites
-                      </h4>
-                      <ul className="space-y-2">
-                        <li>
-                          <NavLink href="/destinations/kartarpur">
-                            Kartarpur Sahib
-                          </NavLink>
-                        </li>
-                        <li>
-                          <NavLink href="/destinations/nankana">
-                            Nankana Sahib
-                          </NavLink>
-                        </li>
-                        <li>
-                          <NavLink href="/destinations/panja">
-                            Panja Sahib
-                          </NavLink>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="space-y-4">
-                      <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-400">
-                        More Locations
-                      </h4>
-                      <ul className="space-y-2">
-                        <li>
-                          <NavLink href="/destinations/dehra">
-                            Dehra Sahib
-                          </NavLink>
-                        </li>
-                        <li>
-                          <NavLink href="/destinations/rori">
-                            Rori Sahib
-                          </NavLink>
-                        </li>
-                        <li>
-                          <NavLink href="/destinations/all">View All</NavLink>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </NavigationMenu.Content>
-              </NavigationMenu.Portal>
+              </Link>
             </NavigationMenu.Item>
 
             <NavigationMenu.Item>
               <Link
-                href="/visa-sourcing"
-                className="text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-primary transition-colors"
+                href="/visa-processing"
+                className="text-sm font-medium text-white dark:text-zinc-300 hover:text-primary transition-colors"
               >
-                Visa Sourcing
+                Visa Processing Service
               </Link>
             </NavigationMenu.Item>
 
             <NavigationMenu.Item>
               <Link
                 href="/packages"
-                className="text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-primary transition-colors"
+                className="text-sm font-medium text-white dark:text-zinc-300 hover:text-primary transition-colors"
               >
                 Packages
               </Link>
@@ -137,7 +84,7 @@ const Navbar = () => {
             <NavigationMenu.Item>
               <Link
                 href="/contact"
-                className="text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-primary transition-colors"
+                className="text-sm font-medium text-white dark:text-zinc-300 hover:text-primary transition-colors"
               >
                 Contact Us
               </Link>
@@ -146,9 +93,9 @@ const Navbar = () => {
         </NavigationMenu.Root>
 
         {/* Actions */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 ">
           <Button variant="ghost" size="sm" className="!p-2 !rounded-full">
-            <Search className="w-5 h-5" />
+            <Search className="w-5 h-5 text-white" />
           </Button>
 
           <div className="h-6 w-[1px] bg-zinc-200 dark:bg-zinc-800 hidden sm:block" />
@@ -196,8 +143,8 @@ const Navbar = () => {
                   <MobileNavLink href="/destinations">
                     Destinations
                   </MobileNavLink>
-                  <MobileNavLink href="/visa-sourcing">
-                    Visa Sourcing
+                  <MobileNavLink href="/visa-processing">
+                    Visa Processing Service
                   </MobileNavLink>
                   <MobileNavLink href="/packages">Packages</MobileNavLink>
                   <MobileNavLink href="/contact">Contact Us</MobileNavLink>
@@ -228,7 +175,7 @@ const NavLink = ({
 }) => (
   <Link
     href={href}
-    className="block text-zinc-600 dark:text-zinc-400 hover:text-primary dark:hover:text-primary transition-colors py-1 group flex items-center justify-between"
+    className="block text-white dark:text-zinc-400 hover:text-primary dark:hover:text-primary transition-colors py-1 group flex items-center justify-between"
   >
     {children}
     <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />

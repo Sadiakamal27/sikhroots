@@ -8,16 +8,12 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen pt-24 pb-16 px-6 bg-gradient-to-b from-zinc-50 to-white dark:from-zinc-950 dark:to-black">
-      <div className="max-w-8xl mx-auto">
-        {/* Hero Container with rounded image background */}
-        <div className="relative bg-white dark:bg-zinc-900 rounded-[2.3rem] overflow-hidden shadow-2xl">
-          {/* Background Image - Replace /hero-bg.jpg with your own image */}
-          <div className="relative h-[700px] md:h-[800px] lg:h-[900px]">
-            {/* Placeholder gradient background - replace this with your image */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary via-secondary to-accent opacity-90" />
-
-            {/* Uncomment below and add your image to /public/hero-bg.jpg */}
+    <section className="relative min-h-screen px-4 py-4 md:px-6 md:py-6 bg-zinc-50 dark:bg-zinc-950">
+      <div className="max-w-[1800px] mx-auto h-[calc(100vh-3rem)] md:h-[calc(100vh-3rem)] min-h-[700px] relative">
+        {/* Main Rounded Image Container */}
+        <div className="absolute inset-0 rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-2xl">
+          {/* Background Image */}
+          <div className="absolute inset-0">
             <Image
               src="/heroimage.jpg"
               alt="Sikh Pilgrimage"
@@ -25,13 +21,12 @@ const Hero = () => {
               className="object-cover"
               priority
             />
-
             {/* Overlay for better text readability */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
           </div>
 
           {/* Content Overlay */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+          <div className="relative z-10 h-full flex flex-col items-center justify-center px-6 text-center pt-20">
             {/* Tag/Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -75,7 +70,6 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-col sm:flex-row gap-4 items-center"
             >
-              {/* Primary Button - Mustard/Primary Color */}
               <Button
                 variant="primary"
                 size="lg"
@@ -85,7 +79,6 @@ const Hero = () => {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
 
-              {/* Secondary Button - Black */}
               <Button
                 variant="primary"
                 size="lg"
