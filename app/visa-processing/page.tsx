@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -20,6 +20,69 @@ import {
 import { Button, Input, Textarea, Form, Field } from "@/components/ui";
 
 const VisaProcessingPage = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    website: "",
+    comment: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          formType: "comment",
+          ...formData,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: "success",
+          message: "Thank you! Your comment has been submitted.",
+        });
+        setFormData({
+          name: "",
+          email: "",
+          website: "",
+          comment: "",
+        });
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message: "Failed to submit comment. Please try again.",
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message: "An error occurred. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const documents = [
     {
       title: "Passport Front Page",
@@ -436,18 +499,15 @@ const VisaProcessingPage = () => {
               marked *
             </p>
 
-            <Form
-              onSubmit={(e: React.FormEvent) => {
-                e.preventDefault();
-                console.log("Comment submitted");
-              }}
-              className="space-y-6"
-            >
+            <Form onSubmit={handleSubmit} className="space-y-6">
               <Field.Root name="comment">
                 <Field.Label className="text-zinc-600 font-medium">
                   Comment *
                 </Field.Label>
                 <Field.Control
+                  name="comment"
+                  value={formData.comment}
+                  onChange={handleChange}
                   render={
                     <Textarea
                       placeholder=""
@@ -465,6 +525,9 @@ const VisaProcessingPage = () => {
                     Name *
                   </Field.Label>
                   <Field.Control
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     render={
                       <Input
                         placeholder=""
@@ -481,9 +544,12 @@ const VisaProcessingPage = () => {
                     Email *
                   </Field.Label>
                   <Field.Control
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     render={
                       <Input
-                        type="email"
                         placeholder=""
                         className="h-12 bg-white border-zinc-200"
                       />
@@ -498,6 +564,9 @@ const VisaProcessingPage = () => {
                     Website
                   </Field.Label>
                   <Field.Control
+                    name="website"
+                    value={formData.website}
+                    onChange={handleChange}
                     render={
                       <Input
                         placeholder=""
@@ -521,13 +590,27 @@ const VisaProcessingPage = () => {
                 </label>
               </div>
 
+              {/* Status Message */}
+              {submitStatus.type && (
+                <div
+                  className={`p-4 rounded-xl ${
+                    submitStatus.type === "success"
+                      ? "bg-green-50 text-green-800 border border-green-200"
+                      : "bg-red-50 text-red-800 border border-red-200"
+                  }`}
+                >
+                  {submitStatus.message}
+                </div>
+              )}
+
               <Button
                 type="submit"
                 variant="primary"
                 size="lg"
-                className="!bg-zinc-900 !text-white hover:!bg-zinc-800 !rounded-full !px-10 !py-4"
+                disabled={isSubmitting}
+                className="!bg-zinc-900 !text-white hover:!bg-zinc-800 !rounded-full !px-10 !py-4 disabled:!opacity-50 disabled:!cursor-not-allowed"
               >
-                Post Comment
+                {isSubmitting ? "Posting..." : "Post Comment"}
               </Button>
             </Form>
           </motion.div>

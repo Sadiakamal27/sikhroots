@@ -11,7 +11,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 const Section2 = () => {
   const [totalPersons, setTotalPersons] = useState("2");
   const [totalDays, setTotalDays] = useState("1");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
   const [isHovered, setIsHovered] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
 
   // Calculate total based on persons and days
   const calculateTotal = () => {
@@ -20,6 +27,50 @@ const Section2 = () => {
     const pricePerPerson =
       persons === 1 ? 250 : persons === 2 ? 200 : persons === 3 ? 300 : 400;
     return `$${pricePerPerson * days}`;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          formType: "reservation",
+          name,
+          phone,
+          totalPersons,
+          totalDays,
+          totalPrice: calculateTotal(),
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: "success",
+          message: "Reservation inquiry sent successfully!",
+        });
+        setName("");
+        setPhone("");
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message: "Failed to send inquiry. Please try again.",
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message: "An error occurred. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const pricingOptions = [
@@ -107,31 +158,69 @@ const Section2 = () => {
                 <CardTitle className="!text-center">Reservation Form</CardTitle>
               </CardHeader>
               <CardContent className="!p-8 !pt-6">
-                <form className="space-y-6">
-                  {/* Total Persons Input */}
-                  <Input
-                    type="number"
-                    min={1}
-                    max={10}
-                    value={totalPersons}
-                    onChange={(e) => setTotalPersons(e.target.value)}
-                    placeholder="2"
-                    label="Total Persons"
-                  />
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Name Input */}
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                      Full Name
+                    </label>
+                    <Input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="Your Name"
+                      required
+                    />
+                  </div>
 
-                  {/* Total Days Dropdown */}
-                  <Select
-                    value={totalDays}
-                    onValueChange={(value) => setTotalDays(value || "1")}
-                    label="Total Days"
-                    placeholder="Select days"
-                  >
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((day) => (
-                      <SelectItem key={day} value={String(day)}>
-                        {day} {day === 1 ? "Day" : "Days"}
-                      </SelectItem>
-                    ))}
-                  </Select>
+                  {/* Phone Input */}
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                      Phone Number
+                    </label>
+                    <Input
+                      type="tel"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder="Your Phone Number"
+                      required
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    {/* Total Persons Input */}
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                        Total Persons
+                      </label>
+                      <Input
+                        type="number"
+                        min={1}
+                        max={10}
+                        value={totalPersons}
+                        onChange={(e) => setTotalPersons(e.target.value)}
+                        placeholder="2"
+                      />
+                    </div>
+
+                    {/* Total Days Dropdown */}
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                        Total Days
+                      </label>
+                      <Select
+                        value={totalDays}
+                        onValueChange={(value) => setTotalDays(value || "1")}
+                        placeholder="Select days"
+                      >
+                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((day) => (
+                          <SelectItem key={day} value={String(day)}>
+                            {day} {day === 1 ? "Day" : "Days"}
+                          </SelectItem>
+                        ))}
+                      </Select>
+                    </div>
+                  </div>
 
                   {/* Total Display */}
                   <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800">
@@ -144,12 +233,26 @@ const Section2 = () => {
                       </span>
                     </div>
 
+                    {/* Status Message */}
+                    {submitStatus.type && (
+                      <div
+                        className={`p-3 rounded-xl mb-4 text-sm ${
+                          submitStatus.type === "success"
+                            ? "bg-green-50 text-green-800 border border-green-200"
+                            : "bg-red-50 text-red-800 border border-red-200"
+                        }`}
+                      >
+                        {submitStatus.message}
+                      </div>
+                    )}
+
                     {/* Submit Button with special hover effect */}
                     <Button
                       type="submit"
                       variant="primary"
                       size="lg"
-                      className={`!w-full transition-all duration-300 ${
+                      disabled={isSubmitting}
+                      className={`!w-full transition-all duration-300 disabled:!opacity-50 ${
                         isHovered
                           ? "!bg-zinc-400 dark:!bg-zinc-600 !rounded-2xl"
                           : "!bg-black dark:!bg-white dark:!text-black !rounded-none"
@@ -157,7 +260,7 @@ const Section2 = () => {
                       onMouseEnter={() => setIsHovered(true)}
                       onMouseLeave={() => setIsHovered(false)}
                     >
-                      Make Reservation
+                      {isSubmitting ? "Processing..." : "Make Reservation"}
                     </Button>
                   </div>
                 </form>

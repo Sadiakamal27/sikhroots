@@ -118,7 +118,7 @@ const Navbar = () => {
             {mobileMenuOpen ? (
               <X className="w-6 h-6" />
             ) : (
-              <MenuIcon className="w-6 h-6" />
+              <MenuIcon className="w-6 h-6 text-white" />
             )}
           </Button>
         </div>

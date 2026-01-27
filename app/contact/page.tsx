@@ -27,16 +27,62 @@ const ContactPage = () => {
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log(formData);
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          formType: "contact",
+          ...formData,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: "success",
+          message: "Thank you! Your message has been sent successfully.",
+        });
+        // Reset form
+        setFormData({
+          fullName: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        setSubmitStatus({
+          type: "error",
+          message: "Failed to send message. Please try again.",
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message: "An error occurred. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -199,14 +245,28 @@ const ContactPage = () => {
                       <Field.Error />
                     </Field.Root>
 
+                    {/* Status Message */}
+                    {submitStatus.type && (
+                      <div
+                        className={`p-4 rounded-xl ${
+                          submitStatus.type === "success"
+                            ? "bg-green-50 text-green-800 border border-green-200"
+                            : "bg-red-50 text-red-800 border border-red-200"
+                        }`}
+                      >
+                        {submitStatus.message}
+                      </div>
+                    )}
+
                     {/* Submit Button */}
                     <Button
                       type="submit"
                       variant="primary"
                       size="lg"
-                      className="!bg-zinc-900 !text-white hover:!bg-zinc-800 !rounded-full !px-8"
+                      disabled={isSubmitting}
+                      className="!bg-zinc-900 !text-white hover:!bg-zinc-800 !rounded-full !px-8 disabled:!opacity-50 disabled:!cursor-not-allowed"
                     >
-                      Send Message
+                      {isSubmitting ? "Sending..." : "Send Message"}
                       <ArrowRight className="w-5 h-5 ml-1" />
                     </Button>
                   </Form>
