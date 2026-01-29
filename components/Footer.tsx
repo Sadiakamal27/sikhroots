@@ -39,23 +39,7 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className="w-full lg:max-w-xl space-y-6">
-            <h3 className="text-xl font-bold">Our Newsletter</h3>
-            <div className="flex items-center gap-3">
-              <Input
-                type="email"
-                placeholder="Your Email Address"
-                className="!bg-zinc-900 !border-zinc-800 !rounded-full"
-              />
-              <Button
-                variant="secondary"
-                size="md"
-                className="shrink-0 !bg-white !text-black hover:!bg-zinc-200"
-              >
-                Subscribe <ArrowRight className="w-4 h-4" />
-              </Button>
-            </div>
-          </div>
+         
         </div>
 
         {/* Middle Section: Links */}

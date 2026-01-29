@@ -17,7 +17,7 @@ export default function Home() {
       <Section4 />
       <Section5 />
       <Section6 />
-      <BlogSection />
+      <BlogSection limit={4} />
 
       {/* Additional sections will go here */}
     </div>

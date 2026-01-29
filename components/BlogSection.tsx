@@ -1,107 +1,83 @@
-"use client";
-
 import React from "react";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { client } from "@/lib/contentful";
+import { BlogPostEntry } from "@/lib/contentful-types";
+import BlogList from "./BlogList";
 import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/Card";
+import { ArrowRight } from "lucide-react";
 
-const BlogSection = () => {
-  const blogs = [
-    {
-      id: 1,
-      category: "Uncategorized",
-      title: "Guru Nanak Gurpurab 2025 – Sikh Pilgrimage In Pakistan",
-      image: "/heroimage.jpg",
-      slug: "gurpurab-2025",
-    },
-    {
-      id: 2,
-      category: "Uncategorized",
-      title:
-        "How To Get A Pakistan Visa For Sikh Yatris: A Simple Step-By-Step Guide",
-      image: "/heroimage.jpg",
-      slug: "visa-guide",
-    },
-  ];
+const BlogSection = async ({ limit }: { limit?: number }) => {
+  let blogs: {
+    id: string;
+    category: string;
+    title: string;
+    image: string;
+    slug: string;
+  }[] = [];
+
+  let totalPosts = 0;
+
+  try {
+    if (client) {
+      const response = await client.getEntries<BlogPostEntry>({
+        content_type: "blogPost",
+        order: ["-sys.createdAt"],
+        limit: limit,
+      });
+
+      totalPosts = response.total;
+
+      blogs = response.items.map((item) => ({
+        id: item.sys.id,
+        category: item.fields.category || "Uncategorized",
+        title: item.fields.title,
+        image: (item.fields.coverImage as any)?.fields?.file?.url
+          ? `https:${(item.fields.coverImage as any).fields.file.url}`
+          : "/heroimage.jpg",
+        slug: item.fields.slug,
+      }));
+    }
+  } catch (error) {
+    console.error("Error fetching blogs from Contentful:", error);
+  }
 
   return (
     <section className="py-24 px-6 bg-white dark:bg-black">
       <div className="max-w-8xl mx-auto">
-        {/* Header content matching UI */}
         <div className="mb-16 space-y-4">
-          <motion.h2
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-zinc-900 dark:text-white"
-          >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-zinc-900 dark:text-white">
             Read Our Latest Blog &{" "}
             <span className="font-serif italic text-zinc-500">Articles</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-zinc-500 text-base md:text-lg"
-          >
+          </h2>
+          <p className="text-zinc-500 text-base md:text-lg">
             Following is a detailed blog article on our Tours and travel topics
-          </motion.p>
+          </p>
         </div>
 
-        {/* Blog Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {blogs.map((blog, index) => (
-            <motion.div
-              key={blog.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <Card
-                hover={false}
-                className="group !rounded-3xl !p-0 !shadow-sm hover:!shadow-xl transition-all duration-500"
-              >
-                <CardContent className="!p-4 md:!p-6">
-                  <div className="flex flex-col md:flex-row gap-8 items-start md:items-center">
-                    {/* Blog Image */}
-                    <div className="relative w-full md:w-52 lg:w-64 h-52 md:h-44 rounded-2xl overflow-hidden shrink-0">
-                      <Image
-                        src={blog.image}
-                        alt={blog.title}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                    </div>
+        {blogs.length > 0 ? (
+          <>
+            <BlogList blogs={blogs} />
 
-                    {/* Blog Info */}
-                    <div className="flex flex-col flex-1">
-                      <span className="text-zinc-400 text-sm font-medium mb-3">
-                        {blog.category}
-                      </span>
-                      <Link href={`/blog/${blog.slug}`}>
-                        <h3 className="text-xl md:text-2xl font-bold text-zinc-900 dark:text-white mb-6 group-hover:text-primary transition-colors line-clamp-2 md:line-clamp-none">
-                          {blog.title}
-                        </h3>
-                      </Link>
-
-                      <Link
-                        href={`/blog/${blog.slug}`}
-                        className="inline-flex items-center gap-2 text-sm font-bold text-zinc-900 dark:text-white group/btn"
-                      >
-                        Read More
-                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                      </Link>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
+            {limit && totalPosts > limit && (
+              <div className="mt-16 flex justify-center">
+                <Link
+                  href="/blog"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-zinc-900 dark:bg-white text-white dark:text-black rounded-full text-lg font-bold hover:bg-primary hover:text-white transition-all shadow-xl shadow-zinc-200 dark:shadow-none"
+                >
+                  Read More
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </div>
+            )}
+          </>
+        ) : (
+          <div className="text-center py-20 border-2 border-dashed border-zinc-200 dark:border-zinc-800 rounded-3xl">
+            <p className="text-zinc-500">
+              {!client
+                ? "Contentful is not configured. Please check your .env.local file."
+                : "No blog posts found. Start by creating content in your Contentful dashboard."}
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );

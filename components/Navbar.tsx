@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import {
   Menu as MenuIcon,
@@ -18,6 +19,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 
 const Navbar = () => {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -29,6 +31,16 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Determine if text should be dark (e.g., on blog index page or when scrolled)
+  // For now, let's make it dark on /blog (index) and when scrolled if we add a bg later.
+  // The user specifically mentioned the blog page.
+  const isLightPage = pathname === "/blog";
+  const navTextColor = isLightPage
+    ? "text-zinc-900 dark:text-white"
+    : "text-white dark:text-zinc-300";
+
+  const iconColor = isLightPage ? "text-zinc-900" : "text-white";
+
   return (
     <nav className="absolute top-6 left-0 right-0 z-50 px-6 py-4 bg-transparent">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -37,7 +49,14 @@ const Navbar = () => {
           <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-110 transition-transform duration-300">
             <span className="text-white font-bold text-xl">S</span>
           </div>
-          <span className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white font-sans">
+          <span
+            className={cn(
+              "text-xl font-bold tracking-tight font-sans",
+              isLightPage
+                ? "text-zinc-900 dark:text-white"
+                : "text-white dark:text-white",
+            )}
+          >
             Sikh<span className="text-primary font-serif italic">Roots</span>
           </span>
         </Link>
@@ -48,7 +67,10 @@ const Navbar = () => {
             <NavigationMenu.Item>
               <Link
                 href="/"
-                className="text-sm font-medium text-white dark:text-zinc-300 hover:text-primary transition-colors"
+                className={cn(
+                  "text-sm font-medium hover:text-primary transition-colors",
+                  navTextColor,
+                )}
               >
                 Home
               </Link>
@@ -57,7 +79,10 @@ const Navbar = () => {
             <NavigationMenu.Item>
               <Link
                 href="/destinations"
-                className="text-sm font-medium text-white dark:text-zinc-300 hover:text-primary transition-colors"
+                className={cn(
+                  "text-sm font-medium hover:text-primary transition-colors",
+                  navTextColor,
+                )}
               >
                 Destinations
               </Link>
@@ -66,7 +91,10 @@ const Navbar = () => {
             <NavigationMenu.Item>
               <Link
                 href="/visa-processing"
-                className="text-sm font-medium text-white dark:text-zinc-300 hover:text-primary transition-colors"
+                className={cn(
+                  "text-sm font-medium hover:text-primary transition-colors",
+                  navTextColor,
+                )}
               >
                 Visa Processing Service
               </Link>
@@ -75,7 +103,10 @@ const Navbar = () => {
             <NavigationMenu.Item>
               <Link
                 href="/packages"
-                className="text-sm font-medium text-white dark:text-zinc-300 hover:text-primary transition-colors"
+                className={cn(
+                  "text-sm font-medium hover:text-primary transition-colors",
+                  navTextColor,
+                )}
               >
                 Packages
               </Link>
@@ -83,8 +114,23 @@ const Navbar = () => {
 
             <NavigationMenu.Item>
               <Link
+                href="/blog"
+                className={cn(
+                  "text-sm font-medium hover:text-primary transition-colors",
+                  navTextColor,
+                )}
+              >
+                Blog
+              </Link>
+            </NavigationMenu.Item>
+
+            <NavigationMenu.Item>
+              <Link
                 href="/contact"
-                className="text-sm font-medium text-white dark:text-zinc-300 hover:text-primary transition-colors"
+                className={cn(
+                  "text-sm font-medium hover:text-primary transition-colors",
+                  navTextColor,
+                )}
               >
                 Contact Us
               </Link>
@@ -95,7 +141,7 @@ const Navbar = () => {
         {/* Actions */}
         <div className="flex items-center gap-4 ">
           <Button variant="ghost" size="sm" className="!p-2 !rounded-full">
-            <Search className="w-5 h-5 text-white" />
+            <Search className={cn("w-5 h-5", iconColor)} />
           </Button>
 
           <div className="h-6 w-[1px] bg-zinc-200 dark:bg-zinc-800 hidden sm:block" />
@@ -116,9 +162,16 @@ const Navbar = () => {
             className="md:!hidden !p-2"
           >
             {mobileMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X
+                className={cn(
+                  "w-6 h-6",
+                  isLightPage
+                    ? "text-zinc-900"
+                    : "text-zinc-900 dark:text-white",
+                )}
+              />
             ) : (
-              <MenuIcon className="w-6 h-6 text-white" />
+              <MenuIcon className={cn("w-6 h-6", iconColor)} />
             )}
           </Button>
         </div>
@@ -147,6 +200,7 @@ const Navbar = () => {
                     Visa Processing Service
                   </MobileNavLink>
                   <MobileNavLink href="/packages">Packages</MobileNavLink>
+                  <MobileNavLink href="/blog">Blog</MobileNavLink>
                   <MobileNavLink href="/contact">Contact Us</MobileNavLink>
                   <MobileNavLink href="/about">About</MobileNavLink>
                 </div>

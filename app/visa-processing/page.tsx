@@ -320,7 +320,7 @@ const VisaProcessingPage = () => {
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 mt-12">
+            {/* <div className="flex flex-col sm:flex-row gap-4 mt-12">
               <Button
                 size="lg"
                 className="!bg-primary !text-white !rounded-full !px-8 shadow-xl shadow-primary/20"
@@ -335,7 +335,7 @@ const VisaProcessingPage = () => {
                 Send Us A Message
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
-            </div>
+            </div> */}
           </div>
 
           <hr className="border-zinc-100 mb-20" />

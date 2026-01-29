@@ -33,16 +33,14 @@ export async function POST(request: NextRequest) {
         <p>${formData.message}</p>
       `;
     } else if (formType === "package-booking") {
-      subject = `New Package Booking Inquiry from ${formData.fullName}`;
+      subject = `New Package Booking Request from ${formData.fullName}`;
       htmlContent = `
-        <h2>New Package Booking Inquiry</h2>
+        <h2>New Package Booking </h2>
         <p><strong>Name:</strong> ${formData.fullName}</p>
         <p><strong>Email:</strong> ${formData.email}</p>
         <p><strong>Phone:</strong> ${formData.phone}</p>
         <p><strong>Number of Travelers:</strong> ${formData.travelers}</p>
         <p><strong>Preferred Departure Date:</strong> ${formData.departureDate}</p>
-        <p><strong>Message:</strong></p>
-        <p>${formData.message || "No additional message"}</p>
       `;
     } else if (formType === "comment") {
       subject = `New Comment from ${formData.name} on Visa Processing Page`;
