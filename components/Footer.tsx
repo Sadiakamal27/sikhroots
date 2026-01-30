@@ -19,12 +19,12 @@ import { Button } from "@/components/ui/Button";
 
 const Footer = () => {
   return (
-    <footer className="bg-zinc-950 text-white pt-24 pb-12 px-6 border-t border-zinc-800">
+    <footer className="bg-zinc-950 text-white pt-16 md:pt-24 pb-10 px-4 md:px-6 border-t border-zinc-800">
       <div className="max-w-7xl mx-auto">
         {/* Top Section: Logo and Newsletter */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-12 pb-16 border-b border-zinc-800/50">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10 pb-12 md:pb-16 border-b border-zinc-800/50">
           <div className="max-w-sm space-y-6">
-            <div className="relative w-24 h-24 rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/heroimage.jpg"
                 alt="Sikh Yatra Logo"
@@ -38,16 +38,14 @@ const Footer = () => {
               journey.
             </p>
           </div>
-
-         
         </div>
 
         {/* Middle Section: Links */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 py-16 text-left">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 py-12 md:py-16 text-left">
           {/* Discover */}
-          <div className="space-y-8">
-            <h4 className="text-xl font-bold">Discover</h4>
-            <ul className="space-y-4">
+          <div className="space-y-6 md:space-y-8">
+            <h4 className="text-lg md:text-xl font-bold">Discover</h4>
+            <ul className="space-y-3 md:space-y-4">
               <li>
                 <FooterLink href="/destinations/kartarpur">
                   Kartarpur Sahib
@@ -71,9 +69,9 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-8">
-            <h4 className="text-xl font-bold">Quick Links</h4>
-            <ul className="space-y-4">
+          <div className="space-y-6 md:space-y-8">
+            <h4 className="text-lg md:text-xl font-bold">Quick Links</h4>
+            <ul className="space-y-3 md:space-y-4">
               <li>
                 <FooterLink href="/about">About</FooterLink>
               </li>
@@ -93,9 +91,9 @@ const Footer = () => {
           </div>
 
           {/* Support */}
-          <div className="space-y-8">
-            <h4 className="text-xl font-bold">Support</h4>
-            <ul className="space-y-4">
+          <div className="space-y-6 md:space-y-8">
+            <h4 className="text-lg md:text-xl font-bold">Support</h4>
+            <ul className="space-y-3 md:space-y-4">
               <li>
                 <FooterLink href="/help">Help Center</FooterLink>
               </li>
@@ -115,36 +113,42 @@ const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-8">
-            <h4 className="text-xl font-bold">Contact Info</h4>
-            <ul className="space-y-6">
-              <li className="space-y-2">
-                <span className="text-zinc-500 text-sm block">Phone</span>
+          <div className="space-y-6 md:space-y-8">
+            <h4 className="text-lg md:text-xl font-bold">Contact Info</h4>
+            <ul className="space-y-5 md:space-y-6">
+              <li className="space-y-1 md:space-y-2">
+                <span className="text-zinc-500 text-xs md:text-sm block">
+                  Phone
+                </span>
                 <a
                   href="tel:+923109490040"
-                  className="text-zinc-300 hover:text-white transition-colors font-medium"
+                  className="text-zinc-300 hover:text-white transition-colors font-medium text-sm md:text-base"
                 >
                   +92 310 9490040
                 </a>
               </li>
-              <li className="space-y-2">
-                <span className="text-zinc-500 text-sm block">Address</span>
-                <span className="text-zinc-300 font-medium">
+              <li className="space-y-1 md:space-y-2">
+                <span className="text-zinc-500 text-xs md:text-sm block">
+                  Address
+                </span>
+                <span className="text-zinc-300 font-medium text-sm md:text-base">
                   Wah Cantt, Islamabad
                 </span>
               </li>
-              <li className="space-y-2">
-                <span className="text-zinc-500 text-sm block">Email</span>
-                <div className="flex flex-col gap-1">
+              <li className="space-y-1 md:space-y-2">
+                <span className="text-zinc-500 text-xs md:text-sm block">
+                  Email
+                </span>
+                <div className="flex flex-col gap-1 overflow-hidden">
                   <a
                     href="mailto:Jatinder@Sikhpakistanyatra.Com"
-                    className="text-zinc-300 hover:text-white transition-colors font-medium"
+                    className="text-zinc-300 hover:text-white transition-colors font-medium text-sm md:text-base break-all sm:break-normal"
                   >
                     Jatinder@Sikhpakistanyatra.Com
                   </a>
                   <a
                     href="mailto:Booking@Sikhpakistanyatra.Com"
-                    className="text-zinc-300 hover:text-white transition-colors font-medium"
+                    className="text-zinc-300 hover:text-white transition-colors font-medium text-sm md:text-base break-all sm:break-normal"
                   >
                     Booking@Sikhpakistanyatra.Com
                   </a>
@@ -155,8 +159,8 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section: Copyright and Socials */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8 pt-12 border-t border-zinc-800/50">
-          <p className="text-zinc-500 text-sm text-center md:text-left">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-10 border-t border-zinc-800/50">
+          <p className="text-zinc-500 text-xs md:text-sm text-center md:text-left">
             © Sikh Yatra Pakistan. All Right Reserved 2024. Developed by{" "}
             <a
               href="https://mrsinghdev.com"
