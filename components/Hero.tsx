@@ -2,8 +2,9 @@
 
 import React from "react";
 import { Button } from "@/components/ui";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight,  Phone } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import Image from "next/image";
 
 const Hero = () => {
@@ -70,6 +71,8 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-col sm:flex-row gap-4 items-center w-full px-8 sm:px-0 sm:w-auto"
             >
+              <Link href="/packages">
+                  
               <Button
                 variant="primary"
                 size="lg"
@@ -78,7 +81,9 @@ const Hero = () => {
                 Book Your Yatra
                 <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-
+              </Link>
+ 
+  <Link href="/contact">
               <Button
                 variant="primary"
                 size="lg"
@@ -87,6 +92,7 @@ const Hero = () => {
                 <Phone className="w-4 h-4 md:w-5 md:h-5" />
                 Contact Us
               </Button>
+              </Link>
             </motion.div>
 
             {/* Trust Indicators */}

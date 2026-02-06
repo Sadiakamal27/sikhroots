@@ -12,3 +12,12 @@ export interface BlogPostFields {
 }
 
 export type BlogPostEntry = EntrySkeletonType<BlogPostFields>;
+
+export interface PopupAdFields {
+  title: string;
+  image: Asset;
+  link?: string;
+  isActive: boolean;
+}
+
+export type PopupAdEntry = EntrySkeletonType<PopupAdFields>;

@@ -126,6 +126,18 @@ const Navbar = () => {
 
             <NavigationMenu.Item>
               <Link
+                href="/about"
+                className={cn(
+                  "text-sm font-medium hover:text-primary transition-colors",
+                  navTextColor,
+                )}
+              >
+                About
+              </Link>
+            </NavigationMenu.Item>
+
+            <NavigationMenu.Item>
+              <Link
                 href="/contact"
                 className={cn(
                   "text-sm font-medium hover:text-primary transition-colors",
@@ -147,7 +159,7 @@ const Navbar = () => {
           <div className="h-6 w-[1px] bg-zinc-200 dark:bg-zinc-800 hidden sm:block" />
 
           <Link
-            href="/book-now"
+            href="/packages"
             className="hidden sm:flex items-center gap-2 px-5 py-2.5 bg-accent text-white rounded-full text-sm font-semibold hover:bg-accent/90 transition-all active:scale-95 shadow-lg shadow-accent/20"
           >
             <Heart className="w-4 h-4 fill-white" />
@@ -207,7 +219,7 @@ const Navbar = () => {
               </div>
 
               <Link
-                href="/book-now"
+                href="/packages"
                 className="w-full py-4 bg-primary text-white rounded-2xl text-center font-bold shadow-xl shadow-primary/20"
               >
                 Book Your Yatra

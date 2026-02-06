@@ -307,7 +307,11 @@ const ContactPage = () => {
                     <h4 className="font-semibold text-zinc-900 text-lg">
                       Office Location
                     </h4>
-                    <p className="text-zinc-600">Wah Cantt, Hassan Abdal</p>
+                    <p className="text-zinc-600">
+                      9192 Red Branch Road - Suite 300
+                      <br />
+                      Columbia MD 21045
+                    </p>
                   </div>
                 </motion.div>
 
@@ -326,7 +330,12 @@ const ContactPage = () => {
                     <h4 className="font-semibold text-zinc-900 text-lg">
                       Email Address
                     </h4>
-                    <p className="text-zinc-600">info@sikhyatrapakistan.com</p>
+                    <a
+                      href="mailto:contact@mttours.travel"
+                      className="text-zinc-600 hover:text-zinc-900 transition-colors"
+                    >
+                      contact@mttours.travel
+                    </a>
                   </div>
                 </motion.div>
 
@@ -345,7 +354,12 @@ const ContactPage = () => {
                     <h4 className="font-semibold text-zinc-900 text-lg">
                       Office Phone Number
                     </h4>
-                    <p className="text-zinc-600">+92 310 9490040</p>
+                    <a
+                      href="tel:+18332073324"
+                      className="text-zinc-600 hover:text-zinc-900 transition-colors"
+                    >
+                      +1 833 207 3324
+                    </a>
                   </div>
                 </motion.div>
               </div>
@@ -401,7 +415,7 @@ const ContactPage = () => {
 
       {/* WhatsApp Floating Button */}
       <Link
-        href="https://wa.me/923109490040"
+        href="https://wa.me/18332073324"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 flex items-center gap-3 group"

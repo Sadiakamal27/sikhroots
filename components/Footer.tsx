@@ -121,10 +121,10 @@ const Footer = () => {
                   Phone
                 </span>
                 <a
-                  href="tel:+923109490040"
+                  href="tel:+18332073324"
                   className="text-zinc-300 hover:text-white transition-colors font-medium text-sm md:text-base"
                 >
-                  +92 310 9490040
+                  +1 833 207 3324
                 </a>
               </li>
               <li className="space-y-1 md:space-y-2">
@@ -132,7 +132,9 @@ const Footer = () => {
                   Address
                 </span>
                 <span className="text-zinc-300 font-medium text-sm md:text-base">
-                  Wah Cantt, Islamabad
+                  9192 Red Branch Road - Suite 300
+                  <br />
+                  Columbia MD 21045
                 </span>
               </li>
               <li className="space-y-1 md:space-y-2">
@@ -141,16 +143,10 @@ const Footer = () => {
                 </span>
                 <div className="flex flex-col gap-1 overflow-hidden">
                   <a
-                    href="mailto:Jatinder@Sikhpakistanyatra.Com"
+                    href="mailto:contact@mttours.travel"
                     className="text-zinc-300 hover:text-white transition-colors font-medium text-sm md:text-base break-all sm:break-normal"
                   >
-                    Jatinder@Sikhpakistanyatra.Com
-                  </a>
-                  <a
-                    href="mailto:Booking@Sikhpakistanyatra.Com"
-                    className="text-zinc-300 hover:text-white transition-colors font-medium text-sm md:text-base break-all sm:break-normal"
-                  >
-                    Booking@Sikhpakistanyatra.Com
+                    contact@mttours.travel
                   </a>
                 </div>
               </li>

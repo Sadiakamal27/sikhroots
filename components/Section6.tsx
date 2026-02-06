@@ -16,14 +16,19 @@ const Section6 = () => {
 
   // Gallery images with varied aspect ratios to create the masonry effect
   const galleryImages: GalleryImage[] = [
-    { src: "/heroimage.jpg", aspect: "aspect-[3/4]" },
-    { src: "/heroimage.jpg", aspect: "aspect-[4/5]" },
-    { src: "/heroimage.jpg", aspect: "aspect-[3/2]" },
-    { src: "/heroimage.jpg", aspect: "aspect-[2/3]" },
-    { src: "/heroimage.jpg", aspect: "aspect-square" },
-    { src: "/heroimage.jpg", aspect: "aspect-[3/4]" },
-    { src: "/heroimage.jpg", aspect: "aspect-[4/5]" },
-    { src: "/heroimage.jpg", aspect: "aspect-[2/3]" },
+    { src: "/gallery/01.jpg", aspect: "aspect-[3/4]" },
+    { src: "/gallery/02.jpg", aspect: "aspect-[4/5]" },
+    { src: "/gallery/03.jpg", aspect: "aspect-[3/2]" },
+    { src: "/gallery/04.jpg", aspect: "aspect-[2/3]" },
+    { src: "/gallery/05.jpg", aspect: "aspect-square" },
+    { src: "/gallery/07.jpg", aspect: "aspect-[3/4]" },
+    { src: "/gallery/08.jpg", aspect: "aspect-[3/4]" },
+    { src: "/gallery/10.jpg", aspect: "aspect-[3/4]" },
+    { src: "/gallery/11.jpg", aspect: "aspect-[3/4]" },
+    { src: "/gallery/14.jpg", aspect: "aspect-[3/4]" },
+    { src: "/gallery/13.jpg", aspect: "aspect-[3/4]" },
+    { src: "/gallery/15.jpg", aspect: "aspect-[3/4]" },
+
   ];
 
   return (
