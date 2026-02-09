@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Button } from "@/components/ui";
-import { ArrowRight,  Phone } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -46,10 +46,9 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 max-w-5xl font-serif leading-tight px-2"
+              className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-6 max-w-5xl font-serif leading-none px-2 tracking-tight"
             >
-              Experiencing The Bliss on the Land of{" "}
-              <span className="text-primary">Guru Nanak</span>
+              Matha Tayk <span className="text-primary italic">Tours</span>
             </motion.h1>
 
             {/* Subheading */}
@@ -57,11 +56,9 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-sm sm:text-base md:text-xl text-white/90 mb-8 md:mb-10 max-w-2xl px-4"
+              className="text-base sm:text-lg md:text-2xl text-white/95 mb-8 md:mb-10 max-w-3xl px-4 font-light tracking-wide italic"
             >
-              Embark on a spiritual pilgrimage to the sacred Gurdwaras of
-              Pakistan. Let us guide you through history, heritage, and
-              devotion.
+              Reconnect with your heritage and build cherished memories!
             </motion.p>
 
             {/* CTA Buttons */}
@@ -72,26 +69,25 @@ const Hero = () => {
               className="flex flex-col sm:flex-row gap-4 items-center w-full px-8 sm:px-0 sm:w-auto"
             >
               <Link href="/packages">
-                  
-              <Button
-                variant="primary"
-                size="lg"
-                className="w-full sm:w-auto !bg-primary !border-2 !border-white !shadow-2xl hover:!shadow-primary/50 !rounded-full text-xs sm:text-sm md:text-base py-6 sm:py-3"
-              >
-                Book Your Yatra
-                <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+                <Button
+                  variant="primary"
+                  size="lg"
+                  className="w-full sm:w-auto !bg-primary !border-2 !border-white !shadow-2xl hover:!shadow-primary/50 !rounded-full text-xs sm:text-sm md:text-base py-6 sm:py-3"
+                >
+                  Book Your Yatra
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
               </Link>
- 
-  <Link href="/contact">
-              <Button
-                variant="primary"
-                size="lg"
-                className="w-full sm:w-auto !bg-black !border-2 !border-white !shadow-2xl hover:!shadow-black/50 !rounded-full text-xs sm:text-sm md:text-base py-6 sm:py-3"
-              >
-                <Phone className="w-4 h-4 md:w-5 md:h-5" />
-                Contact Us
-              </Button>
+
+              <Link href="/contact">
+                <Button
+                  variant="primary"
+                  size="lg"
+                  className="w-full sm:w-auto !bg-black !border-2 !border-white !shadow-2xl hover:!shadow-black/50 !rounded-full text-xs sm:text-sm md:text-base py-6 sm:py-3"
+                >
+                  <Phone className="w-4 h-4 md:w-5 md:h-5" />
+                  Contact Us
+                </Button>
               </Link>
             </motion.div>
 

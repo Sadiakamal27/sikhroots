@@ -433,6 +433,50 @@ const ContactPage = () => {
           </svg>
         </div>
       </Link>
+
+      {/* Quote Section */}
+      <section className="pb-16 md:pb-24 px-6 mt-[-40px]">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative rounded-[3rem] overflow-hidden group shadow-2xl"
+          >
+            <div className="absolute inset-0">
+              <Image
+                src="/heroimage.jpg"
+                alt="Quote Background"
+                fill
+                className="object-cover transition-transform duration-1000 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+            </div>
+
+            <div className="relative z-10 py-20 px-8 text-center flex flex-col items-center max-w-4xl mx-auto">
+              <div className="w-12 h-1px bg-white/30 mb-8" />
+
+              <blockquote className="text-2xl md:text-3xl font-serif text-white leading-snug mb-10 italic px-4">
+                &ldquo;Even kings and emperors, with mountains of property and
+                oceans of wealth - these are not even equal to an ant, who does
+                not forget God.&rdquo;
+              </blockquote>
+
+              <div className="flex flex-col items-center">
+                <div className="text-lg md:text-xl text-white font-medium mb-1">
+                  — Guru Nanak
+                </div>
+                <div className="text-white/60 text-sm uppercase tracking-[0.2em]">
+                  Sri Guru Granth Sahib
+                </div>
+              </div>
+
+              <div className="w-12 h-1px bg-white/30 mt-8" />
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 };

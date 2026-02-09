@@ -45,293 +45,365 @@ interface Package {
 // Sample packages data
 const packagesData: Package[] = [
   {
-    id: "vaisakhi-tour",
-    name: "Vaisakhi Special Tour",
-    duration: "7 Days 6 Night",
+    id: "basic-package",
+    name: "Basic Package",
+    duration: "8 Nights and 7 Days",
     description:
-      "Embark on a spiritually transformative Yatra to the most sacred Sikh sites across Pakistan — a journey rooted in history, devotion, and community. This guided pilgrimage is tailored for those seeking to reconnect with Guru Nanak Dev Ji's legacy through daily kirtan, darshan, and historical exploration.",
+      "Embark on a spiritual and cultural journey designed for the Sikh community! Experience the rich history, sacred sites, and the vibrant culture that connect us to our roots in Pakistan.",
     image: "/heroimage.jpg",
-    price: "$1,299",
+    price: "$1,699",
     gurdwaras: [
+      { name: "Gurdwara Bebe Nanaki", description: "Sacred site in Lahore" },
       {
-        name: "Gurdwara Janam Asthan (Nankana Sahib)",
-        description: "the birthplace of Guru Nanak Dev Ji",
+        name: "Gurdwara Dera Sahib",
+        description: "Historical shrine in Lahore",
       },
       {
-        name: "Gurdwara Kartarpur Sahib",
-        description: "where Guru Nanak spent his final years",
+        name: "Gurdwara Darbar Sahib Ji",
+        description: "The Symbol of Peace and Love in Kartarpur",
       },
       {
-        name: "Gurdwara Panja Sahib",
-        description: "home to the divine handprint of Guru Nanak",
+        name: "Nankana Sahib Ji",
+        description: "Birthplace of Guru Nanak Dev Ji",
+      },
+      {
+        name: "Panja Sahib",
+        description: "Historical handprint of Guru Nanak",
       },
     ],
-    otherSites: ["Rohri Sahib", "Sacha Sauda", "Dera Sahib Lahore"],
-    greatForTags: [
-      "Spiritual Pilgrimage",
-      "Cultural Tours",
-      "Heritage Tours",
-      "Historic Sikh Sites",
+    otherSites: [
+      "Dayal Singh Library",
+      "Anarkali Bazaar",
+      "Lakshmi Chowk",
+      "Hazrat Mian Mir",
+      "Faisal Mosque",
+      "Centaurus Mall",
     ],
+    greatForTags: ["Spiritual", "Heritage", "Community"],
     highlights: [
-      "Visit to historical Gurdwaras including Nankana Sahib, Kartarpur Sahib, and Panja Sahib",
-      "Daily spiritual experiences with Kirtan and Darshan",
-      "Comfortable luxury coach travel and 4-star accommodations",
-      "Vegetarian meals, bottled water, laundry, and medical assistance included",
-      "Local Punjabi-speaking guides and high-level security",
+      "Lahore: City of Gurus and Pirs",
+      "Kartarpur: Symbol of Peace and Love",
+      "Nankana Sahib: Divine Light of Sharing",
+      "Eminabad & Sialkot: Witness to Miracles",
+      "Islamabad: Modern Capital Exploration",
     ],
     packageIncludes: [
-      "Airport pickup & drop-off (Pakistan)",
-      "4-star hotel stays on twin-sharing basis",
-      "Daily breakfast & dinner (vegetarian)",
-      "Luxury full-service coach transportation",
-      "Government security protocol",
-      "Punjabi-speaking tour guide",
-      "Two mineral water bottles per day",
-      "Complimentary laundry (2 garments per head)",
-      "Free medical emergency services upon request",
-      "Emergency personal assistant upon request",
+      "8-nights' stay in quality hotels",
+      "Private AC transport (Arrival to Departure)",
+      "Daily vegetarian Breakfast and Dinner",
+      "Daily bottled mineral water",
+      "Punjabi-speaking hospitality staff",
+      "Entry tickets, road taxes & local charges",
+      "Complete Visa documentation support",
     ],
     tourPlan: [
       {
         day: 1,
-        title: "Arrival in Lahore",
+        title: "Lahore Arrival & Exploration",
         activities: [
-          "Arrival in Lahore (Allama Iqbal International Airport)",
-          "Hotel check-in and breakfast",
-          "Visit Mia Meer Darbar and Gurdwara Bebe Nanki",
-          "Dinner and overnight in Lahore",
+          "Arrival in Lahore",
+          "Visit Dayal Singh College & Trust Library",
+          "Explore Anarkali",
+          "Dinner at Lakshmi Chowk",
         ],
       },
       {
         day: 2,
-        title: "Nankana Sahib Visit",
+        title: "Lahore Local Shrines",
         activities: [
-          "Breakfast and morning departure to Nankana Sahib (approx. 1.5 hours)",
-          "Tour Gurdwaras: Patti Sahib, Bal Lila Sahib, Panjvin & Chhevin Patshahi, Maal Ji Sahib, Kiara Sahib, Tambu Sahib, Janam Asthan, and Sacha Sauda",
-          "Return to Lahore",
-          "Dinner and overnight in Lahore",
+          "Gurdwara Bebe Nanaki",
+          "Darbar Hazrat Mian Mir",
+          "Gurdwara Dera Sahib",
+          "Samadhi Maharaja Ranjit Singh",
+          "Dinner at Lakshmi Chowk",
         ],
       },
       {
         day: 3,
-        title: "Kartarpur Sahib",
+        title: "Kartarpur Yatra",
         activities: [
-          "Breakfast and departure to Kartarpur Sahib (approx. 3.5 hours)",
-          "Visit Gurdwara Darbar Sahib Kartarpur and shopping",
-          "Return to Lahore",
-          "Dinner and overnight in Lahore",
+          "Full-day darshan at Gurdwara Darbar Sahib Ji",
+          "Return to hotel for dinner and rest",
         ],
       },
       {
         day: 4,
-        title: "Journey to Hassan Abdal",
+        title: "Nankana Sahib Ji",
         activities: [
-          "Breakfast and check-out",
-          "Travel from Lahore to Hassan Abdal (approx. 5 hours)",
-          "Attend Nagar Kirtan at Panja Sahib",
-          "Check-in to Legend Hotel, Islamabad",
-          "Dinner and overnight in Islamabad",
+          "Visit Janam Asthaan, Bal Lila, Kiara Sahib and 7 sacred Gurdwaras",
+          "Dinner and overnight stay",
         ],
       },
       {
         day: 5,
-        title: "Panja Sahib Vaisakhi",
+        title: "Eminabad & Sialkot",
         activities: [
-          "Breakfast and check-out",
-          "Visit Gurdwara Panja Sahib for Vaisakhi Paht Samapti",
-          "Return to Lahore (approx. 5 hours)",
-          "Dinner and overnight in Lahore",
+          "Visit Gurdwara Rohri Sahib, Chakki Sahib, Bhai Lalu di Khoi",
+          "Gurdwara Bair Sahib in Sialkot",
+          "Travel to Islamabad for check-in",
         ],
       },
       {
         day: 6,
-        title: "Eminabad Tour",
+        title: "Panja Sahib Darshan",
         activities: [
-          "Breakfast and morning departure to Eminabad (approx. 1.5 hours)",
-          "Visit Gurdwara Rori Sahib, Bhai Lalo da Ghar, Chakki Sahib, and Babe di Ber Sahib",
-          "Return to Lahore",
-          "Dinner and overnight in Lahore",
+          "Full day yatra to Panja Sahib in Hassan Abdal",
+          "Dinner at Basti Restaurant, Islamabad",
         ],
       },
       {
         day: 7,
-        title: "Lahore Gurdwaras & Departure",
+        title: "Capital City Tour & Departure",
         activities: [
-          "Breakfast and departure for tour of Lahore Gurdwaras",
-          "Visit Janam Asthan Guru Ram Das Ji, Gurdwara Shahid Ganj Singh Singhania, Gurdwara Dera Sahib",
-          "Visit Maharaja Ranjit Singh Smadhi and Shahi Qila",
-          "Dinner and overnight in Lahore",
+          "Visit Purana Qila, Raja Bazar, Faisal Mosque",
+          "Daman-e-Koh, Rawal Lake, Centaurus Mall",
+          "Farewell dinner at Dera Dari",
+          "Airport transfer",
         ],
       },
     ],
-    carouselImages: ["/heroimage.jpg", "/heroimage.jpg", "/heroimage.jpg"],
+    carouselImages: ["/heroimage.jpg", "/heroimage.jpg"],
   },
   {
-    id: "heritage-tour",
-    name: "Heritage & Culture Tour",
-    duration: "5 Days 4 Night",
+    id: "heritage-package",
+    name: "Heritage Package",
+    duration: "8 Nights and 7 Days",
     description:
-      "Discover the rich heritage and cultural significance of historic Sikh sites. This tour focuses on the architectural beauty and historical importance of key Gurdwaras and monuments.",
+      "Embark on a spiritual and cultural journey designed for the Sikh community! Experience the rich history, sacred sites, and the vibrant culture that connect us to our roots in Pakistan.",
     image: "/heroimage.jpg",
-    price: "$899",
+    price: "$1,999",
     gurdwaras: [
-      {
-        name: "Gurdwara Kartarpur Sahib",
-        description: "where Guru Nanak spent his final years",
-      },
+      { name: "Gurdwara Bebe Nanaki", description: "Sacred site in Lahore" },
       {
         name: "Gurdwara Dera Sahib",
-        description: "martyrdom site of Guru Arjan Dev Ji",
+        description: "Historical shrine in Lahore",
       },
+      {
+        name: "Gurdwara Darbar Sahib Ji",
+        description: "Symbol of Peace (Kartarpur)",
+      },
+      {
+        name: "Nankana Sahib Ji",
+        description: "Divine Foundation of Wand Chakko",
+      },
+      { name: "Gurdwara Rohri Sahib", description: "Eminabad miracles" },
     ],
-    otherSites: ["Shahi Qila", "Badshahi Mosque", "Lahore Fort"],
-    greatForTags: [
-      "Heritage Tours",
-      "Cultural Exploration",
-      "Photography Tours",
-      "Historic Sites",
+    otherSites: [
+      "Haveli Restaurant",
+      "3-4 Star Luxury Hotels",
+      "Museums",
+      "Handicraft Markets",
     ],
+    greatForTags: ["Heritage", "Luxury", "Culture"],
     highlights: [
-      "Explore architectural marvels and historic monuments",
-      "Professional photography opportunities",
-      "Cultural immersion with local communities",
-      "Comfortable 4-star accommodations",
-      "Expert local guides",
+      "Upgraded 3-4 Star Luxury Accommodations",
+      "Historical and spiritual essence of Lahore",
+      "Peace and Love journey to Kartarpur",
+      "Divine Light of Nankana Sahib",
+      "Sialkot & Eminabad site excursions",
     ],
     packageIncludes: [
-      "Airport transfers",
-      "4-star hotel accommodation",
-      "Daily meals (vegetarian)",
-      "Transportation in luxury coach",
-      "Professional tour guide",
-      "Entry fees to all sites",
+      "8-nights' stay in 3-4 star luxury hotels",
+      "Private air-conditioned transportation",
+      "Daily vegetarian Breakfast and Dinner",
+      "Daily bottled mineral water",
+      "Expert Punjabi-speaking guides",
+      "All entry tickets and local taxes",
+      "Visa documentation and support",
     ],
     tourPlan: [
       {
         day: 1,
-        title: "Arrival & Lahore Exploration",
+        title: "Lahore Welcome & Heritage Intro",
         activities: [
-          "Arrival in Lahore",
-          "Hotel check-in",
-          "Visit Badshahi Mosque and Lahore Fort",
-          "Dinner at hotel",
+          "Warm welcome at Lahore Airport",
+          "Dayal Singh Library & College visit",
+          "Anarkali cultural walk",
+          "Lakshmi Chowk dinner",
         ],
       },
       {
         day: 2,
-        title: "Kartarpur Sahib",
+        title: "Lahore Heritage Sites",
         activities: [
-          "Breakfast",
-          "Full day visit to Kartarpur Sahib",
-          "Return to Lahore",
-          "Dinner and overnight",
+          "Gurdwara Bebe Nanaki",
+          "Shrine of Hazrat Mian Mir",
+          "Gurdwara Dera Sahib",
+          "Samadhi of Maharaja Ranjit Singh",
+          "Grand dinner at Haveli",
         ],
       },
       {
         day: 3,
-        title: "Lahore Heritage Sites",
+        title: "Kartarpur Legacy",
         activities: [
-          "Visit Gurdwara Dera Sahib",
-          "Explore Shahi Qila",
-          "Visit local markets",
-          "Dinner and overnight",
+          "Sacred Darshan at Kartarpur Darbar Sahib",
+          "Corridor experience",
+          "Return to Lahore",
         ],
       },
       {
         day: 4,
-        title: "Cultural Immersion",
+        title: "Spiritual Nankana Sahib",
         activities: [
-          "Visit local communities",
-          "Cultural performances",
-          "Traditional meal experience",
-          "Dinner and overnight",
+          "Janam Asthaan and surrounding Gurdwaras",
+          "Spiritual discourse and yatra",
+          "Evening meditation",
         ],
       },
       {
         day: 5,
-        title: "Departure",
+        title: "Miracles of Eminabad",
         activities: [
-          "Breakfast",
-          "Last-minute shopping",
-          "Transfer to airport",
+          "Rohri Sahib & Chakki Sahib",
+          "Gurdwara Bair Sahib Sialkot",
+          "Late evening arrival in Islamabad",
+        ],
+      },
+      {
+        day: 6,
+        title: "Hassan Abdal Legacy",
+        activities: [
+          "Full day at Panja Sahib",
+          "Islamabad sightseeing",
+          "Dinner at Basti Restaurant",
+        ],
+      },
+      {
+        day: 7,
+        title: "Capital Exploration & Farewell",
+        activities: [
+          "Faisal Mosque & Daman-e-Koh",
+          "Raja Bazar shopping",
+          "Centaurus Mall visit",
+          "Dera Dari farewell dinner",
+          "Departure",
         ],
       },
     ],
-    carouselImages: ["/heroimage.jpg", "/heroimage.jpg", "/heroimage.jpg"],
+    carouselImages: ["/heroimage.jpg", "/heroimage.jpg"],
   },
   {
-    id: "spiritual-retreat",
-    name: "Spiritual Retreat Package",
-    duration: "10 Days 9 Night",
+    id: "executive-package",
+    name: "Executive Package",
+    duration: "8 Nights and 8 Days",
     description:
-      "An extended spiritual journey covering all major Sikh pilgrimage sites. Perfect for those seeking deep spiritual connection and comprehensive exploration of Sikh heritage.",
+      "This exclusive VIP Package offers a luxurious and spiritual retreat. Enjoy premium amenities, Murree Hills leisure, and a cultural gala night alongside sacred site visits.",
     image: "/heroimage.jpg",
-    price: "$1,799",
+    price: "$2,499",
     gurdwaras: [
       {
-        name: "Gurdwara Janam Asthan (Nankana Sahib)",
-        description: "the birthplace of Guru Nanak Dev Ji",
+        name: "Gurdwara Babay Nanak",
+        description: "Spiritual landmark of Lahore",
       },
-      {
-        name: "Gurdwara Kartarpur Sahib",
-        description: "where Guru Nanak spent his final years",
-      },
-      {
-        name: "Gurdwara Panja Sahib",
-        description: "home to the divine handprint of Guru Nanak",
-      },
-      {
-        name: "Gurdwara Dera Sahib",
-        description: "martyrdom site of Guru Arjan Dev Ji",
-      },
+      { name: "Gurdwara Dera Sahib", description: "Lahore heritage" },
+      { name: "Kartarpur Darbar Sahib", description: "VIP Corridor Darshan" },
+      { name: "Nankana Sahib (7 Sites)", description: "Complete Pilgrimage" },
+      { name: "Gurdwara Panja Sahib", description: "Hassan Abdal Highlights" },
     ],
     otherSites: [
-      "Rohri Sahib",
-      "Sacha Sauda",
-      "All Lahore Gurdwaras",
-      "Eminabad sites",
+      "PC Bhurban",
+      "Murree Hills",
+      "Luxus Hotel",
+      "Ghazal Night",
+      "BBQ Gala Dinner",
+      "Golf Sessions",
     ],
-    greatForTags: [
-      "Spiritual Pilgrimage",
-      "Extended Tours",
-      "Deep Immersion",
-      "Complete Heritage",
-    ],
+    greatForTags: ["VIP", "Luxury", "Premium Retreat"],
     highlights: [
-      "Comprehensive coverage of all major Sikh sites",
-      "Extended time for spiritual practices",
-      "Multiple Kirtan and Darshan sessions",
-      "Luxury accommodations throughout",
-      "Personal spiritual guide",
-      "Small group sizes for intimate experience",
+      "Stay at PC Bhurban & Luxus Lahore",
+      "BBQ Gala Dinner and Ghazal Night",
+      "Leisure time in Murree Hills & Golfing",
+      "Exclusive 7-Gurdwara tour at Nankana Sahib",
+      "VIP Transportation and Security Protocol",
     ],
     packageIncludes: [
-      "All airport transfers",
-      "5-star hotel accommodations",
-      "All meals (vegetarian)",
-      "Premium luxury coach",
-      "Personal spiritual guide",
-      "Government security",
-      "Medical support 24/7",
-      "Laundry services",
-      "Mineral water",
-      "Travel insurance",
+      "7-nights' stay in Top-tier 4-star & PC Hotels",
+      "Premium Private AC transportation",
+      "Gourmet vegetarian Breakfast and Dinner",
+      "Unlimited bottled water",
+      "Professional Punjabi hospitality team",
+      "All inclusive site tags & priority access",
+      "Premium Visa documentation support",
     ],
     tourPlan: [
       {
         day: 1,
-        title: "Arrival",
+        title: "VIP Lahore Arrival",
         activities: [
-          "Arrival in Lahore",
-          "5-star hotel check-in",
-          "Welcome dinner",
-          "Orientation session",
+          "Airport meet & greet",
+          "Diyal Singh University & Library",
+          "Anarkali Bazaar walk",
+          "Lakshmi Chowk dinner",
         ],
       },
-      // Add more days as needed
+      {
+        day: 2,
+        title: "Spiritual Lahore",
+        activities: [
+          "Gurdwara Babay Nanak & Dera Sahib",
+          "Samadhi Maharaja Ranjit Singh",
+          "Hazrat Mian Mir Shrine",
+          "Grand dinner at Haveli Restaurant",
+        ],
+      },
+      {
+        day: 3,
+        title: "Kartarpur VIP Yatra",
+        activities: [
+          "Full-day Darshan at Kartarpur Sahib",
+          "Priority access",
+          "Dinner and luxury stay in Lahore",
+        ],
+      },
+      {
+        day: 4,
+        title: "Complete Nankana Yatra",
+        activities: [
+          "7 Sacred Gurdwaras tour",
+          "Maal Jee, Bal Lila, Patti Sahib visits",
+          "Quiet reflection time",
+        ],
+      },
+      {
+        day: 5,
+        title: "Legacy Path to North",
+        activities: [
+          "Gurdwara Rohri Sahib & Bher Sahib",
+          "Eminabad miracles tour",
+          "Arrival at Legend/3-Tree Islamabad",
+        ],
+      },
+      {
+        day: 6,
+        title: "Divine Panja Sahib",
+        activities: [
+          "Full day at Hassan Abdal",
+          "Spiritual session at Panja Sahib",
+          "Basti Restaurant dinner",
+        ],
+      },
+      {
+        day: 7,
+        title: "Hill Retreat: Bhurban",
+        activities: [
+          "Check-in at PC Bhurban",
+          "Leisure/Golfing",
+          "BBQ Gala Dinner & Ghazal Night",
+        ],
+      },
+      {
+        day: 8,
+        title: "Capital Finale",
+        activities: [
+          "Raja Bazar & Faisal Mosque",
+          "Centaurus Mall shopping",
+          "Farewell dinner at Dera Dari",
+          "Airport Departure",
+        ],
+      },
     ],
-    carouselImages: ["/heroimage.jpg", "/heroimage.jpg", "/heroimage.jpg"],
+    carouselImages: ["/heroimage.jpg", "/heroimage.jpg"],
   },
 ];
 
@@ -487,12 +559,23 @@ const PackagesPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-center mb-12"
               >
-                <h2 className="text-3xl md:text-4xl font-serif text-zinc-900 mb-4">
-                  Choose Your Journey
+                <h2 className="text-3xl md:text-5xl font-serif text-zinc-900 mb-6 max-w-4xl mx-auto leading-tight">
+                  Explore the Sacred Sikh Heritage of Pakistan – Two Exclusive
+                  Packages
                 </h2>
-                <p className="text-zinc-600 text-lg max-w-2xl mx-auto">
-                  Select from our carefully curated pilgrimage packages, each
-                  designed to provide a unique spiritual experience
+                <p className="text-zinc-600 text-lg md:text-xl max-w-4xl mx-auto leading-relaxed">
+                  Join us on a spiritual journey through Pakistan&apos;s most
+                  revered Sikh and cultural landmarks with our thoughtfully
+                  curated travel packages. Choose from our Standard Package,
+                  designed for those seeking a meaningful and well-guided
+                  pilgrimage across Lahore, Kartarpur, Nankana Sahib, and more.
+                  Or indulge in our VIP Package, which blends sacred exploration
+                  with luxury, adding scenic retreats like Murree and exclusive
+                  experiences such as a golf session and gala dinner. Both
+                  packages offer professional Punjabi-speaking guides, private
+                  transportation, and 4-star accommodations — tailored to
+                  provide an enriching and unforgettable darshan yatra
+                  experience.
                 </p>
               </motion.div>
 
@@ -571,6 +654,48 @@ const PackagesPage = () => {
                   </motion.div>
                 ))}
               </div>
+
+              {/* Quote Section */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="mt-24 relative rounded-[3rem] overflow-hidden group shadow-2xl"
+              >
+                <div className="absolute inset-0">
+                  <Image
+                    src="/heroimage.jpg"
+                    alt="Quote Background"
+                    fill
+                    className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+                </div>
+
+                <div className="relative z-10 py-20 px-8 text-center flex flex-col items-center max-w-4xl mx-auto">
+                  <div className="w-12 h-1px bg-white/30 mb-8" />
+
+                  <blockquote className="text-2xl md:text-4xl font-serif text-white leading-snug mb-10 italic">
+                    &ldquo;Burn worldly love, <br />
+                    rub the ashes and make ink of it, <br />
+                    make the heart the pen, <br />
+                    the intellect the writer, <br />
+                    write that which has no end or limit.&rdquo;
+                  </blockquote>
+
+                  <div className="flex flex-col items-center">
+                    <div className="text-lg md:text-xl text-white font-medium mb-1">
+                      — Guru Nanak
+                    </div>
+                    <div className="text-white/60 text-sm uppercase tracking-[0.2em]">
+                      Sri Guru Granth Sahib
+                    </div>
+                  </div>
+
+                  <div className="w-12 h-1px bg-white/30 mt-8" />
+                </div>
+              </motion.div>
             </>
           ) : (
             // Package Details View
