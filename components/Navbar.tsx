@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -22,6 +22,7 @@ const Navbar = () => {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,6 +31,27 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        mobileMenuOpen &&
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target as Node)
+      ) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    if (mobileMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [mobileMenuOpen]);
 
   // Determine if text should be dark (e.g., on blog index page or when scrolled)
   // For now, let's make it dark on /blog (index) and when scrolled if we add a bg later.
@@ -193,6 +215,7 @@ const Navbar = () => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
+            ref={mobileMenuRef}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -204,22 +227,54 @@ const Navbar = () => {
                   Menu
                 </p>
                 <div className="grid grid-cols-2 gap-4">
-                  <MobileNavLink href="/">Home</MobileNavLink>
-                  <MobileNavLink href="/destinations">
+                  <MobileNavLink
+                    href="/"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Home
+                  </MobileNavLink>
+                  <MobileNavLink
+                    href="/destinations"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
                     Destinations
                   </MobileNavLink>
-                  <MobileNavLink href="/visa-processing">
+                  <MobileNavLink
+                    href="/visa-processing"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
                     Visa Processing Service
                   </MobileNavLink>
-                  <MobileNavLink href="/packages">Packages</MobileNavLink>
-                  <MobileNavLink href="/blog">Blog</MobileNavLink>
-                  <MobileNavLink href="/contact">Contact Us</MobileNavLink>
-                  <MobileNavLink href="/about">About</MobileNavLink>
+                  <MobileNavLink
+                    href="/packages"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Packages
+                  </MobileNavLink>
+                  <MobileNavLink
+                    href="/blog"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Blog
+                  </MobileNavLink>
+                  <MobileNavLink
+                    href="/contact"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Contact Us
+                  </MobileNavLink>
+                  <MobileNavLink
+                    href="/about"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    About
+                  </MobileNavLink>
                 </div>
               </div>
 
               <Link
                 href="/packages"
+                onClick={() => setMobileMenuOpen(false)}
                 className="w-full py-4 bg-primary text-white rounded-2xl text-center font-bold shadow-xl shadow-primary/20"
               >
                 Book Your Yatra
@@ -251,12 +306,15 @@ const NavLink = ({
 const MobileNavLink = ({
   href,
   children,
+  onClick,
 }: {
   href: string;
   children: React.ReactNode;
+  onClick?: () => void;
 }) => (
   <Link
     href={href}
+    onClick={onClick}
     className="text-lg font-medium text-zinc-900 dark:text-white hover:text-primary transition-colors"
   >
     {children}
