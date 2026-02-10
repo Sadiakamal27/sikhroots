@@ -4,7 +4,7 @@ import * as React from "react";
 import { Input as BaseInput } from "@base-ui/react/input";
 import { cn } from "@/lib/utils";
 
-export interface InputProps extends BaseInput.Props {}
+export type InputProps = BaseInput.Props;
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, ...props }, ref) => {

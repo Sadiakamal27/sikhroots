@@ -1,6 +1,6 @@
- "use client";
+"use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -215,7 +215,7 @@ const destinationsData: Destination[] = [
   },
 ];
 
-const DestinationsPage = () => {
+const DestinationsContent = () => {
   const searchParams = useSearchParams();
   const destId = searchParams.get("dest");
 
@@ -390,6 +390,14 @@ const DestinationsPage = () => {
         </AnimatePresence>
       </div>
     </div>
+  );
+};
+
+const DestinationsPage = () => {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-white" />}>
+      <DestinationsContent />
+    </Suspense>
   );
 };
 
