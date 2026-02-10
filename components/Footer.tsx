@@ -47,23 +47,29 @@ const Footer = () => {
             <h4 className="text-lg md:text-xl font-bold">Discover</h4>
             <ul className="space-y-3 md:space-y-4">
               <li>
-                <FooterLink href="/destinations/kartarpur">
+                <FooterLink href="/destinations?dest=kartarpur-sahib">
                   Kartarpur Sahib
                 </FooterLink>
               </li>
               <li>
-                <FooterLink href="/destinations/nankana">
-                  Nankana Sahib
+                <FooterLink href="/destinations?dest=janam-asthan">
+                  Janam Asthan (Nankana Sahib)
                 </FooterLink>
               </li>
               <li>
-                <FooterLink href="/destinations/panja">Panja Sahib</FooterLink>
+                <FooterLink href="/destinations?dest=panja-sahib">
+                  Panja Sahib
+                </FooterLink>
               </li>
               <li>
-                <FooterLink href="/destinations/dehra">Dehra Sahib</FooterLink>
+                <FooterLink href="/destinations?dest=dehra-sahib">
+                  Dehra Sahib
+                </FooterLink>
               </li>
               <li>
-                <FooterLink href="/destinations/rori">Rori Sahib</FooterLink>
+                <FooterLink href="/destinations?dest=rori-sahib">
+                  Rori Sahib
+                </FooterLink>
               </li>
             </ul>
           </div>
@@ -76,13 +82,10 @@ const Footer = () => {
                 <FooterLink href="/about">About</FooterLink>
               </li>
               <li>
-                <FooterLink href="/destination">Destination</FooterLink>
+                <FooterLink href="/destinations">Destinations</FooterLink>
               </li>
               <li>
                 <FooterLink href="/packages">Packages</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="/faq">FAQ</FooterLink>
               </li>
               <li>
                 <FooterLink href="/contact">Contact</FooterLink>
@@ -94,20 +97,16 @@ const Footer = () => {
           <div className="space-y-6 md:space-y-8">
             <h4 className="text-lg md:text-xl font-bold">Support</h4>
             <ul className="space-y-3 md:space-y-4">
-              <li>
-                <FooterLink href="/help">Help Center</FooterLink>
+              <li className="text-zinc-400 text-sm md:text-base">Help Center</li>
+              <li className="text-zinc-400 text-sm md:text-base">Booking</li>
+              <li className="text-zinc-400 text-sm md:text-base">
+                Privacy Policy
               </li>
-              <li>
-                <FooterLink href="/booking">Booking</FooterLink>
+              <li className="text-zinc-400 text-sm md:text-base">
+                Terms &amp; Conditions
               </li>
-              <li>
-                <FooterLink href="/privacy">Privacy Policy</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="/terms">Terms & Conditions</FooterLink>
-              </li>
-              <li>
-                <FooterLink href="/online-support">Online Supports</FooterLink>
+              <li className="text-zinc-400 text-sm md:text-base">
+                Online Supports
               </li>
             </ul>
           </div>

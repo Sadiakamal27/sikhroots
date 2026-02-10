@@ -79,7 +79,7 @@ const Section1 = () => {
               className="relative h-[400px] rounded-3xl overflow-hidden shadow-2xl"
             >
               <Image
-                src="/heroimage.jpg"
+                src="/d2.png"
                 alt="Jatinder Singh"
                 fill
                 className="object-cover"
@@ -98,7 +98,7 @@ const Section1 = () => {
             >
               <div className="relative h-[200px] rounded-2xl overflow-hidden shadow-lg">
                 <Image
-                  src="/heroimage.jpg"
+                  src="/d1.jpg"
                   alt="Sacred Site"
                   fill
                   className="object-cover"
@@ -106,7 +106,7 @@ const Section1 = () => {
               </div>
               <div className="relative h-[200px] rounded-2xl overflow-hidden shadow-lg">
                 <Image
-                  src="/heroimage.jpg"
+                  src="/d3.jpg"
                   alt="Pilgrimage Group"
                   fill
                   className="object-cover"

@@ -44,7 +44,7 @@ const PackagesSection = () => {
       duration: "7 Days 6 Nights",
       description:
         "Experience the spiritual journey to sacred Sikh sites including Nankana Sahib, Kartarpur Sahib, and Panja Sahib.",
-      image: "/heroimage.jpg",
+      image: "/p11.jpg",
       price: "$1,299",
       highlights: [
         "Visit to Nankana Sahib",
@@ -58,7 +58,7 @@ const PackagesSection = () => {
       duration: "5 Days 4 Nights",
       description:
         "Discover the rich heritage and cultural significance of historic Sikh sites and monuments.",
-      image: "/heroimage.jpg",
+      image: "/p22.jpg",
       price: "$899",
       highlights: [
         "Kartarpur Sahib",
@@ -72,7 +72,7 @@ const PackagesSection = () => {
       duration: "10 Days 9 Nights",
       description:
         "An extended spiritual journey covering all major Sikh pilgrimage sites with deep immersion.",
-      image: "/heroimage.jpg",
+      image: "/p33.webp",
       price: "$1,799",
       highlights: [
         "All Major Gurdwaras",
@@ -377,7 +377,7 @@ const PackagesSection = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      placeholder="+1 (555) 000-0000"
+                      placeholder="+1 833 207 3324"
                       required
                     />
                   </div>

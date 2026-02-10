@@ -42,7 +42,7 @@ const Section4 = () => {
               className="relative h-64 rounded-3xl overflow-hidden shadow-2xl"
             >
               <Image
-                src="/heroimage.jpg"
+                src="/d22.jpg"
                 alt="Gallery 1"
                 fill
                 className="object-cover"
@@ -57,7 +57,7 @@ const Section4 = () => {
               className="relative h-64 rounded-3xl overflow-hidden shadow-2xl"
             >
               <Image
-                src="/heroimage.jpg"
+                src="/d11.jpeg"
                 alt="Gallery 2"
                 fill
                 className="object-cover"
@@ -72,7 +72,7 @@ const Section4 = () => {
               className="relative h-80 col-span-2 rounded-3xl overflow-hidden shadow-2xl"
             >
               <Image
-                src="/heroimage.jpg"
+                src="/d33.jpg"
                 alt="Gallery 3"
                 fill
                 className="object-cover"

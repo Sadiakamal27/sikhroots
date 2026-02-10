@@ -10,13 +10,13 @@ import {
   Mail,
   Phone,
   ArrowRight,
-  ChevronRight,
   Facebook,
   Twitter,
   Youtube,
   Instagram,
   Send,
 } from "lucide-react";
+import PageHero from "@/components/PageHero";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -87,51 +87,12 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative h-[450px] md:h-[500px] px-4 py-4 md:px-6 md:py-6">
-        <div className="relative h-full w-full overflow-hidden rounded-[2.5rem] md:rounded-[3rem] shadow-2xl">
-          {/* Background Image */}
-          <div className="absolute inset-0">
-            <Image
-              src="/heroimage.jpg"
-              alt="Contact Us"
-              fill
-              className="object-cover"
-              priority
-            />
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
-          </div>
-
-          {/* Hero Content */}
-          <div className="relative z-10 h-full flex flex-col items-center justify-center pt-10">
-            {/* Breadcrumb */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="flex items-center gap-2 text-white/80 text-sm mb-4"
-            >
-              <Link href="/" className="hover:text-white transition-colors">
-                Home
-              </Link>
-              <ChevronRight className="w-4 h-4" />
-              <ChevronRight className="w-4 h-4 -ml-2" />
-              <span className="text-white">Contact</span>
-            </motion.div>
-
-            {/* Title */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-serif text-white font-medium"
-            >
-              Contact
-            </motion.h1>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Contact"
+        backgroundImage="/1233.jpg"
+        backgroundAlt="Contact Us"
+        breadcrumbLabel="Contact"
+      />
 
       {/* Contact Form Section */}
       <section className="py-16 md:py-24 px-6">
@@ -446,7 +407,7 @@ const ContactPage = () => {
           >
             <div className="absolute inset-0">
               <Image
-                src="/heroimage.jpg"
+                src="/1233.jpg"
                 alt="Quote Background"
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-110"

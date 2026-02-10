@@ -1,6 +1,6 @@
-"use client";
+ "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -13,7 +13,9 @@ import {
   Info,
   ChevronLeft,
 } from "lucide-react";
+import PageHero from "@/components/PageHero";
 import { Button, Card } from "@/components/ui";
+import { useSearchParams } from "next/navigation";
 
 interface Destination {
   id: string;
@@ -36,7 +38,7 @@ const destinationsData: Destination[] = [
     location: "Hassan Abdal",
     shortDesc:
       "Visit Gurdwara Panja Sahib, home to the divine handprint of Guru Nanak.",
-    image: "/heroimage.jpg",
+    image: "/1.jpeg",
     fullHistory:
       "Named after the handprint (Panja) of Guru Nanak imprinted on a boulder in 1521 CE. Legend tells of the Guru stopping a rock hurled by Shah Wali Qandhari with his open palm. A clear, fresh spring still gushes from behind the rock today into a large sacred pool.",
     significance: [
@@ -66,7 +68,7 @@ const destinationsData: Destination[] = [
     location: "Narowal",
     shortDesc:
       "Experience the 'Symbol of Peace and Love on Earth' at Gurdwara Darbar Sahib Ji.",
-    image: "/heroimage.jpg",
+    image: "/2.jpeg ",
     fullHistory:
       "Founded in 1504 AD by Baba Guru Nanak, the first guru of Sikhism. It was the site of the first Sikh commune where Guru Nanak settled with his family and lived for 18 years until his death in 1539. The gurdwara honors the site where he did farming and established the community kitchen (Langar).",
     significance: [
@@ -96,7 +98,7 @@ const destinationsData: Destination[] = [
     location: "Nankana Sahib",
     shortDesc:
       "Journey to the 'Divine Light' - the birthplace of Guru Nanak Dev Ji.",
-    image: "/heroimage.jpg",
+    image: "/3.jpeg",
     fullHistory:
       "Formerly known as Rai-Bhoi-Di-Talwandi, renamed after Guru Nanak's birth. The historic Janam Asthan Gurdwara was originally constructed in the 1600s and later renovated by Maharaja Ranjit Singh in 1819. It stands as one of the most important religious sites for the Sikh community worldwide.",
     significance: [
@@ -127,7 +129,7 @@ const destinationsData: Destination[] = [
     location: "Sialkot",
     shortDesc:
       "Sialkot's cherished site where Guru Nanak rested under a Ber tree.",
-    image: "/heroimage.jpg",
+    image: "/4.jpeg",
     fullHistory:
       "In Sialkot, Gurdwara Bair Sahib (Babe di Beri) marks the spot where Guru Nanak Dev Ji rested under a Bair (Ber) tree after his travels. The tree still stands today as a testament to the Guru's visit, where he shared spiritual wisdom with local seekers.",
     significance: [
@@ -157,7 +159,7 @@ const destinationsData: Destination[] = [
     location: "Lahore",
     shortDesc:
       "The sacred site in the heart of Lahore, honoring the memory of Guru Arjan Dev Ji.",
-    image: "/heroimage.jpg",
+    image: "/5.jpeg",
     fullHistory:
       "Located in the walled city of Lahore, Gurdwara Dera Sahib commemorates the site of the martyrdom of Guru Arjan Dev Ji. It is part of the larger Lahore Fort complex and stands as a symbol of sacrifice and spiritual resilience.",
     significance: [
@@ -187,7 +189,7 @@ const destinationsData: Destination[] = [
     location: "Emanabad",
     shortDesc:
       "The historic mound where Guru Nanak and Bhai Mardana found spiritual solace.",
-    image: "/heroimage.jpg",
+    image: "/6.jpeg",
     fullHistory:
       "Gurdwara Rori Sahib marks the spot on a mound where Guru Nanak and Bhai Mardana sat and sung songs together during their travels. It marks one of the three times Guru Nanak visited the site and found pottery shards in the ruins.",
     significance: [
@@ -214,59 +216,32 @@ const destinationsData: Destination[] = [
 ];
 
 const DestinationsPage = () => {
+  const searchParams = useSearchParams();
+  const destId = searchParams.get("dest");
+
   const [selectedDest, setSelectedDest] = useState<Destination | null>(null);
+
+  // Keep selected destination in sync with the current ?dest= query param
+  useEffect(() => {
+    if (!destId) {
+      setSelectedDest(null);
+      return;
+    }
+    const match = destinationsData.find((d) => d.id === destId) ?? null;
+    setSelectedDest(match);
+  }, [destId]);
+
+  const heroTitle = selectedDest ? selectedDest.title : "Destinations";
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[450px] md:h-[500px] px-4 py-4 md:px-6 md:py-6">
-        <div className="relative h-full w-full overflow-hidden rounded-[2.5rem] md:rounded-[3rem] shadow-2xl">
-          <div className="absolute inset-0">
-            <Image
-              src="/heroimage.jpg"
-              alt="Destinations"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
-          </div>
-
-          <div className="relative z-10 h-full flex flex-col items-center justify-center pt-10">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex items-center gap-2 text-white/80 text-sm mb-4"
-            >
-              <Link href="/" className="hover:text-white transition-colors">
-                Home
-              </Link>
-              <ChevronRight className="w-4 h-4" />
-              <Link
-                href="/destinations"
-                onClick={() => setSelectedDest(null)}
-                className="hover:text-white transition-colors"
-              >
-                Destinations
-              </Link>
-              {selectedDest && (
-                <>
-                  <ChevronRight className="w-4 h-4" />
-                  <span className="text-white">{selectedDest.title}</span>
-                </>
-              )}
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-serif text-white font-medium"
-            >
-              {selectedDest ? selectedDest.title : "Destinations"}
-            </motion.h1>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title={heroTitle}
+        backgroundImage="/1233.jpg"
+        backgroundAlt="Sacred Destinations"
+        breadcrumbLabel="Destinations"
+      />
 
       {/* Content Section */}
       <div className="max-w-7xl mx-auto py-16 px-6">

@@ -39,7 +39,7 @@ const Section5 = () => {
           <div
             className="absolute inset-0 z-0"
             style={{
-              backgroundImage: "url('/heroimage.jpg')",
+              backgroundImage: "url('/1233.jpg')",
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundAttachment: "fixed",

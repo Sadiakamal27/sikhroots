@@ -50,7 +50,7 @@ const packagesData: Package[] = [
     duration: "8 Nights and 7 Days",
     description:
       "Embark on a spiritual and cultural journey designed for the Sikh community! Experience the rich history, sacred sites, and the vibrant culture that connect us to our roots in Pakistan.",
-    image: "/heroimage.jpg",
+    image: "/p11.jpg",
     price: "$1,699",
     gurdwaras: [
       { name: "Gurdwara Bebe Nanaki", description: "Sacred site in Lahore" },
@@ -170,7 +170,7 @@ const packagesData: Package[] = [
     duration: "8 Nights and 7 Days",
     description:
       "Embark on a spiritual and cultural journey designed for the Sikh community! Experience the rich history, sacred sites, and the vibrant culture that connect us to our roots in Pakistan.",
-    image: "/heroimage.jpg",
+    image: "/p22.jpg",
     price: "$1,999",
     gurdwaras: [
       { name: "Gurdwara Bebe Nanaki", description: "Sacred site in Lahore" },
@@ -289,7 +289,7 @@ const packagesData: Package[] = [
     duration: "8 Nights and 8 Days",
     description:
       "This exclusive VIP Package offers a luxurious and spiritual retreat. Enjoy premium amenities, Murree Hills leisure, and a cultural gala night alongside sacred site visits.",
-    image: "/heroimage.jpg",
+    image: "/p33.webp",
     price: "$2,499",
     gurdwaras: [
       {
@@ -508,7 +508,7 @@ const PackagesPage = () => {
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
-              src="/heroimage.jpg"
+              src="/ph1.jpg"
               alt="Tour Packages"
               fill
               className="object-cover"
